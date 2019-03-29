@@ -1,25 +1,38 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: []
+    };
+  }
+  onClickItem = () => {
+    const url = "http://ec2-52-23-194-151.compute-1.amazonaws.com:8080";
+    fetch(url)
+      .then(result => {
+        return result.json();
+      })
+      .then(data => {
+        this.setState({
+          users: [...this.state.users, ...data]
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div>
+          {this.state.users.map(user => (
+            <h1>{user}</h1>
+          ))}
+        </div>
+        <button onClick={this.onClickItem}> show Users</button>
       </div>
     );
   }

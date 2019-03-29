@@ -9,6 +9,7 @@ class App extends Component {
       users: []
     };
   }
+
   onClickItem = () => {
     const url = "http://ec2-52-23-194-151.compute-1.amazonaws.com:8080";
     fetch(url)

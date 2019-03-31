@@ -26,13 +26,20 @@ export default class RecommendWord extends Component {
         console.log(err);
       });
   }
+  showSentence = () => {
+    this.props.highlightSentence(this.selectedWord.sentence_id);
+  };
   render() {
     const { selectedWord } = this.props;
     return (
-      <div>
-        <span>{selectedWord.word}</span>
-        <span>{selectedWord.translation}</span>
-        <span onClick={this.saveWord}>save</span>
+      <div className="recommend-word-container">
+        <div onClick={this.showSentence} className="recommend-word">
+          {selectedWord.word}
+        </div>
+        <div className="recommend-translation">{selectedWord.translation}</div>
+        <span className="save-button" onClick={this.saveWord}>
+          save
+        </span>
       </div>
     );
   }

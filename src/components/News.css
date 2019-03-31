@@ -1,0 +1,114 @@
+:root {
+  --main-color: rgb(77, 95, 200);
+  --dark-main-color: rgb(30, 39, 92);
+  --second-color: rgb(252, 205, 34);
+  --third-color: rgb(170, 170, 170);
+  --main-bg-color: rgb(255, 255, 255);
+  --light-font-color: rgb(255, 255, 255);
+  --dark-font-color: rgb(0, 0, 0);
+}
+html {
+  scroll-behavior: smooth;
+}
+.news-content {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.acticle-content {
+  grid-column: 1 / 5;
+  height: 100%;
+  padding: 30px 50px;
+
+  background-color: var(--third-color);
+}
+@media screen and (max-width: 800px) {
+  .acticle-content {
+    position: relative;
+    grid-row: 1;
+    grid-column: 1 / 6;
+
+    padding: 10px 30px;
+  }
+}
+.sentence {
+}
+.sentence:focus {
+  background-color: var(--dark-font-color);
+}
+.spacing {
+  height: 20px;
+}
+.article-photo-container {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+@media screen and (max-width: 400px) {
+  .article-photo-container {
+    width: 100%;
+    overflow: hidden;
+  }
+}
+.article-photo-container img {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  object-fit: cover;
+  overflow: hidden;
+}
+@media screen and (max-width: 400px) {
+  .article-photo-container img {
+    position: relative;
+    top: 25%;
+  }
+}
+.article-author {
+  text-align: right;
+}
+.article-publisher {
+  text-align: right;
+}
+
+.recommend-words-container {
+  grid-column: 5 / 6;
+  background-color: var(--dark-main-color);
+  height: 100%;
+  min-width: 250px;
+  padding: 30px 50px;
+}
+
+@media screen and (max-width: 800px) {
+  .recommend-words-container {
+    position: relative;
+    display: block;
+    grid-row: 2;
+    grid-column: 1 / 6;
+
+    padding: 10px 30px;
+  }
+}
+.recommend-words {
+  width: 100%;
+}
+.recommend-word-container {
+  margin: 10px 0;
+  padding: 5px;
+  border: var(--main-color) 2px solid;
+}
+.recommend-word {
+  margin: 5px 0px;
+  color: var(--light-font-color);
+  font-weight: bold;
+}
+.recommend-translation {
+  margin: 5px 0px;
+  color: var(--third-color);
+}
+.save-button {
+  cursor: pointer;
+}

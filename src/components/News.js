@@ -33,12 +33,16 @@ export default class News extends Component {
     this.selectedWordList = Data.words;
   }
   highlightSentence = sentenceId => {
+    // scroll to the sentence
     const sentence = this.refs[`sentence-${sentenceId}`];
-    // sentence.style.backgroundColor = "black";
     const rect = sentence.getBoundingClientRect();
     window.scrollTo(0, rect.top + window.scrollY);
-    // sentence.click();
-    document.getElementsByClassName(`sentence-${sentenceId}`)[0].focus();
+
+    //highlight the sentence
+    sentence.classList.toggle("sentence-highlight");
+    setTimeout(() => {
+      sentence.classList.toggle("sentence-highlight");
+    }, 1000);
   };
   render() {
     const article = this.article;

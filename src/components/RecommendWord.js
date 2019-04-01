@@ -33,11 +33,11 @@ export default class RecommendWord extends Component {
     const { selectedWord } = this.props;
     return (
       <div className="recommend-word-container">
-        <div onClick={this.showSentence} className="recommend-word">
+        <div onClick={this.showSentence} className="recommend-word button">
           {selectedWord.word}
         </div>
         <div className="recommend-translation">{selectedWord.translation}</div>
-        <span className="save-button" onClick={this.saveWord}>
+        <span className="save-button button" onClick={this.saveWord}>
           save
         </span>
       </div>

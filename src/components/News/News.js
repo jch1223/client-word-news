@@ -53,7 +53,7 @@ export default class News extends Component {
           <div className="acticle-content">
             <h1>{article.title}</h1>
             <div className="article-photo-container">
-              <img src={article.photoUrl} />
+              <img alt={article.title} src={article.photoUrl} />
             </div>
             <div>{article.date}</div>
             <div>

@@ -1,0 +1,72 @@
+/* :root {
+  --main-color: rgb(77, 95, 200);
+  --dark-main-color: rgb(30, 39, 92);
+  --second-color: rgb(252, 205, 34);
+  --third-color: rgb(170, 170, 170);
+  --main-bg-color: rgb(255, 255, 255);
+  --light-font-color: rgb(255, 255, 255);
+  --dark-font-color: rgb(0, 0, 0);
+}
+ */
+
+.lang-select-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.lang-select-button {
+  display: flex;
+  border: 2px var(--dark-font-color) solid;
+  min-width: 100px;
+  height: 30px;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and(max-width: 400px) {
+  .level-select-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.level-select-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.level-select-button {
+  display: flex;
+  border: 2px var(--dark-font-color) solid;
+  min-width: 80px;
+  height: 30px;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and(max-width: 400px) {
+  .category-select-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.category-select-container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.category-select-button {
+  display: flex;
+  border: 2px var(--dark-font-color) solid;
+  /* min-width: 100px; */
+  height: 100px;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  cursor: pointer;
+}

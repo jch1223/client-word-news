@@ -45,7 +45,6 @@ export default class Category extends Component {
       "테크",
       "패션"
     ];
-    console.log("showCategory: ", this.state.showCategory);
     return (
       <div
         className="modal-background category-modal"

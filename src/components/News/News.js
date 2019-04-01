@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import RecommendWord from "./RecommendWord";
-import Data from "../mock-ups/Article";
+import Data from "../../mock-ups/Article";
 import "./News.css";
 export default class News extends Component {
   constructor(props) {

@@ -1,17 +1,45 @@
 import React, { Component } from "react";
 import { Route, Link, Switch } from "react-router-dom";
-import Newses from "./Newses";
-import Wordbook from "./Wordbook";
+import Newses from "./NewsList/Newses";
+import Wordbook from "./Wordbook/Wordbook";
 import Test from "./Test";
 import Setting from "./Setting";
-import News from "./News";
+import News from "./News/News";
 import logo from "../img/logo.png";
+import Signin from "./Session/Signin";
+import Signup from "./Session/Signup";
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showSignIn: false,
+      showSignUp: false
+    };
+  }
+  closeSignInModal = () => {
+    this.setState({
+      showSignIn: false
+    });
+  };
+  closeSignUpModal = () => {
+    this.setState({
+      showSignUp: false
+    });
+  };
   render() {
+    const { showSignIn, showSignUp } = this.state;
     return (
       <div className="header">
         <nav className="nav">
+          <Signin
+            closeSignInModal={this.closeSignInModal}
+            display={showSignIn}
+          />
+          <Signup
+            closeSignUpModal={this.closeSignUpModal}
+            display={showSignUp}
+          />
           <div className="nav-menu">
             <Link to={"/"}>
               <img alt="logo" src={logo} className="nav-logo" />
@@ -30,10 +58,26 @@ export default class Header extends Component {
                 <Link to={"/setting"}>Setting</Link>
               </li>
               <li className="nav-item">
-                <a onClick={() => {}}>Sign In</a>
+                <a
+                  onClick={() => {
+                    this.setState({
+                      showSignIn: true
+                    });
+                  }}
+                >
+                  Sign In
+                </a>
               </li>
               <li className="nav-item">
-                <a onClick={() => {}}>Sign Up</a>
+                <a
+                  onClick={() => {
+                    this.setState({
+                      showSignUp: true
+                    });
+                  }}
+                >
+                  Sign Up
+                </a>
               </li>
             </ul>
           </div>
@@ -42,8 +86,6 @@ export default class Header extends Component {
             <Route path="/words" component={Wordbook} />
             <Route path="/test" component={Test} />
             <Route path="/setting" component={Setting} />
-            {/* <Route path="/signin" component={Signin} />
-            <Route path="/signup" component={Signup} /> */}
             <Route path="/news/:id" component={News} />
             <Route
               exact

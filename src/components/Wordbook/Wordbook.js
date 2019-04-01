@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { baseUrl } from "../data";
-import WordbookData from "../mock-ups/Wordbook";
+import { baseUrl } from "../../data";
+import WordbookData from "../../mock-ups/Wordbook";
 import "./Wordbook.css";
 
 class WordTranslation extends Component {
@@ -153,7 +153,6 @@ export default class Wordbook extends Component {
   };
   showWordTranslation = e => {
     const targetIndex = e.target.parentElement.id;
-    console.log("showWordTranslation");
     this.setState({
       showWordTranslation: true,
       targetWord: this.state.words[targetIndex]

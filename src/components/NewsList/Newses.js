@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ArticleList from "../mock-ups/ArticleList";
+import ArticleList from "../../mock-ups/ArticleList";
 import { Link } from "react-router-dom";
 import Category from "./Category";
 import Cookies from "js-cookie";
@@ -7,7 +7,6 @@ import Cookies from "js-cookie";
 export default class Newses extends Component {
   constructor(props) {
     super(props);
-    console.log("log start: ", Cookies.get("categoryId"));
 
     this.state = {
       categoryId: Cookies.get("categoryId")
@@ -25,7 +24,6 @@ export default class Newses extends Component {
     // TODO: get Category News!
   };
   render() {
-    console.log("hasCategory", this.state.categoryId !== undefined);
     return (
       <>
         <Category

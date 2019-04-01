@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { baseUrl } from "../data";
+import { baseUrl } from "../../data";
 
 export default class RecommendWord extends Component {
   constructor(props) {

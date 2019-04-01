@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Category.css";
+import { categoryList } from "../../data";
 import Cookies from "js-cookie";
 
 const CategoryOption = ({ title, closeCategory }) => {
@@ -35,16 +36,6 @@ export default class Category extends Component {
     // TODO: change user info
   };
   render() {
-    const categoryList = [
-      "핫토픽",
-      "정치",
-      "세계증시",
-      "IT비즈니스",
-      "스포츠",
-      "연예",
-      "테크",
-      "패션"
-    ];
     return (
       <div
         className="modal-background category-modal"

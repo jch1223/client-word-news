@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import Newses from "./NewsList/Newses";
 import Wordbook from "./Wordbook/Wordbook";
-import Test from "./Test";
+import Test from "./Test/Test";
 import Setting from "./Setting";
 import News from "./News/News";
 import logo from "../img/logo.png";

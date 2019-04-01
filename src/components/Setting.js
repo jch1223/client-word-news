@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import fullstar from "../img/full-star.png";
-import emptystar from "../img/empty-star.png";
 import "./Setting.css";
 
 export default class Setting extends Component {

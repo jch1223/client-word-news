@@ -1,0 +1,19 @@
+.category-modal {
+  display: block;
+  z-index: 1;
+}
+
+.category-select {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media screen and (max-width: 700px) {
+  .category-select-button {
+    grid-column: ;
+  }
+}
+
+.category-select-button {
+  background-color: var(--light-font-color);
+}

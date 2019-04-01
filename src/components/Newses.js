@@ -1,16 +1,43 @@
 import React, { Component } from "react";
 import ArticleList from "../mock-ups/ArticleList";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Wordbook from "./Wordbook";
-import News from "./News";
+import { Link } from "react-router-dom";
 import Category from "./Category";
+import Cookies from "js-cookie";
 
 export default class Newses extends Component {
+  constructor(props) {
+    super(props);
+    console.log("log start: ", Cookies.get("categoryId"));
+
+    this.state = {
+      categoryId: Cookies.get("categoryId")
+    };
+  }
+  componentDidMount() {
+    // this.setState({
+    //   categoryId: Cookies.get("categoryId")
+    // });
+  }
+  changeCategory = id => {
+    this.setState({
+      categoryId: id
+    });
+    // TODO: get Category News!
+  };
   render() {
+    console.log("hasCategory", this.state.categoryId !== undefined);
     return (
       <>
-        {/* <Category /> */}
-        <div className="content">
+        <Category
+          changeCategory={this.changeCategory}
+          hasCategory={this.state.categoryId !== undefined}
+        />
+        <div
+          style={{
+            display: this.state.categoryId === undefined ? "none" : "block"
+          }}
+          className="content"
+        >
           <div className="news-ul">
             {ArticleList.map(article => {
               let totalWord = article.ngram.reduce((a, b) => a + b);

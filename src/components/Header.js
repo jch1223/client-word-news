@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 import Newses from "./Newses";
 import Wordbook from "./Wordbook";
 import Test from "./Test";
 import Setting from "./Setting";
-import Signin from "./Signin";
-import Signup from "./Signup";
 import News from "./News";
 import logo from "../img/logo.png";
 

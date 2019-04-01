@@ -43,7 +43,7 @@ input[type="date"] {
 }
 
 .modal-background {
-  position: fixed;
+  position: absolute;
   display: none;
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
@@ -69,4 +69,8 @@ input[type="date"] {
   background-color: transparent;
   border: 2px var(--main-color) solid;
   border-radius: 5px;
+}
+
+.auth-input {
+  display: block;
 }

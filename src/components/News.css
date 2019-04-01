@@ -1,12 +1,3 @@
-:root {
-  --main-color: rgb(77, 95, 200);
-  --dark-main-color: rgb(30, 39, 92);
-  --second-color: rgb(252, 205, 34);
-  --third-color: rgb(170, 170, 170);
-  --main-bg-color: rgb(255, 255, 255);
-  --light-font-color: rgb(255, 255, 255);
-  --dark-font-color: rgb(0, 0, 0);
-}
 html {
   scroll-behavior: smooth;
 }
@@ -32,9 +23,15 @@ html {
   }
 }
 .sentence {
+  line-height: 25px;
+  background-color: transparent;
+  transition: background-color;
+  transition-duration: 1s;
 }
-.sentence:focus {
-  background-color: var(--dark-font-color);
+.sentence-highlight {
+  background-color: var(--second-color);
+  transition: background-color;
+  transition-duration: 1s;
 }
 .spacing {
   height: 20px;
@@ -100,9 +97,17 @@ html {
   padding: 5px;
   border: var(--main-color) 2px solid;
 }
+.recommend-words-title {
+  color: var(--light-font-color);
+}
+.button {
+  cursor: pointer;
+}
 .recommend-word {
   margin: 5px 0px;
   color: var(--light-font-color);
+}
+.recommend-word:hover {
   font-weight: bold;
 }
 .recommend-translation {
@@ -110,5 +115,4 @@ html {
   color: var(--third-color);
 }
 .save-button {
-  cursor: pointer;
 }

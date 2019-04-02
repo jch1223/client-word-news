@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Route, Link, Switch } from "react-router-dom";
-import Newses from "./NewsList/Newses";
-import Wordbook from "./Wordbook/Wordbook";
-import Test from "./Test/Test";
-import Setting from "./Setting";
-import News from "./News/News";
 import logo from "../img/logo.png";
+import Newses from "./NewsList";
+import News from "./News";
+import Wordbook from "./Wordbook";
+import Test from "./Test";
+import Setting from "./Setting";
 import Signin from "./Session/Signin";
 import Signup from "./Session/Signup";
 

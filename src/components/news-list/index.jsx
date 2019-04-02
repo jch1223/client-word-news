@@ -3,6 +3,7 @@ import ArticleList from "../../mock-ups/ArticleList";
 import { Link } from "react-router-dom";
 import Category from "./Category";
 import Cookies from "js-cookie";
+import "./NewsList.css";
 
 export default class Newses extends Component {
   constructor(props) {

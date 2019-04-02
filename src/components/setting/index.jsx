@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Setting.css";
-import { categoryList } from "../data";
+import { categoryList } from "../../data";
 
 export default class Setting extends Component {
   render() {

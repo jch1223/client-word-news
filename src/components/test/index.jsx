@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import Questions from "../../mock-ups/Test";
 
+import { formatted } from "../../util/datetime";
+import { baseUrl } from "../../data";
+import SignIn from "../authentication/Signin";
 import SelectMode from "./SelectMode";
 import TestMode from "./TestMode";
 import ResultMode from "./ResultMode";
-export default class Test extends Component {
+import withRequest from "../withRequest";
+class Test extends Component {
   constructor(props) {
     super(props);
   }
@@ -41,6 +45,7 @@ export default class Test extends Component {
     }
   };
   render() {
+    const { response, closeSignInModal } = this.props;
     const {
       selectMode,
       testMode,
@@ -49,20 +54,35 @@ export default class Test extends Component {
       correctAnswer,
       wrongAnswer
     } = this.state;
-    return (
-      <div className="content">
-        <SelectMode display={selectMode} />
-        <TestMode
-          display={testMode}
-          question={Questions[currentQuestionIndex]}
-          isCorrect={this.isCorrect}
-          nextQuestion={this.nextQuestion}
-        />
-        <ResultMode
-          result={{ correct: correctAnswer, wrong: wrongAnswer }}
-          display={resultMode}
-        />
-      </div>
-    );
+    if (!response) {
+      console.log(this.props);
+      alert("로그인이 필요한 기능입니다.");
+      return (
+        <>
+          <SignIn display={true} closeSignInModal={() => {}} />
+          <h1>로그인이 필요한 기능입니다.</h1>
+        </>
+      );
+      // this.props.showSignInModal();
+    } else {
+      return (
+        <div className="content">
+          <SelectMode display={selectMode} />
+          <TestMode
+            display={testMode}
+            question={Questions[currentQuestionIndex]}
+            isCorrect={this.isCorrect}
+            nextQuestion={this.nextQuestion}
+          />
+          <ResultMode
+            result={{ correct: correctAnswer, wrong: wrongAnswer }}
+            display={resultMode}
+          />
+        </div>
+      );
+    }
   }
 }
+export default withRequest(`${baseUrl}/api/words/${formatted(new Date())}`)(
+  Test
+);

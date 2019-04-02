@@ -8,8 +8,8 @@ import News from "./components/news";
 import Wordbook from "./components/wordbook";
 import Test from "./components/test";
 import Setting from "./components/setting";
-import Signin from "./components/session/Signin";
-import Signup from "./components/session/Signup";
+import Signin from "./components/authentication/Signin";
+import Signup from "./components/authentication/Signup";
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +19,16 @@ class App extends Component {
       showSignUp: false
     };
   }
+  showSignInModal = () => {
+    this.setState({
+      showSignIn: true
+    });
+  };
+  showSignUpModal = () => {
+    this.setState({
+      showSignUp: true
+    });
+  };
   closeSignInModal = () => {
     this.setState({
       showSignIn: false
@@ -29,15 +39,24 @@ class App extends Component {
       showSignUp: false
     });
   };
+  changeToSignUp = () => {
+    this.closeSignInModal();
+    this.showSignUpModal();
+  };
+  goBack = () => {
+    console.log(this.props.history);
+    this.props.history.goBack();
+  };
   render() {
     const { showSignIn, showSignUp } = this.state;
     return (
-      <div className="App">
-        <BrowserRouter>
+      <BrowserRouter>
+        <div className="App">
           <div className="header">
             <nav className="nav">
               <Signin
                 closeSignInModal={this.closeSignInModal}
+                changeToSignUp={this.changeToSignUp}
                 display={showSignIn}
               />
               <Signup
@@ -87,8 +106,17 @@ class App extends Component {
               </div>
               <Switch>
                 <Route path="/" exact component={Newses} />
-                <Route path="/words" component={Wordbook} />
-                <Route path="/test" component={Test} />
+                <Route
+                  path="/words"
+                  component={Wordbook}
+                  showSignInModal={this.showSignInModal}
+                />
+                <Route
+                  path="/test"
+                  render={() => (
+                    <Test closeSignInModal={this.closeSignInModal} />
+                  )}
+                />
                 <Route path="/setting" component={Setting} />
                 <Route path="/news/:id" component={News} />
                 <Route
@@ -99,8 +127,8 @@ class App extends Component {
               </Switch>
             </nav>
           </div>
-        </BrowserRouter>
-      </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }

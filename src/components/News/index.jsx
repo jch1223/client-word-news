@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import RecommendWord from "./RecommendWord";
 import Data from "../../mock-ups/Article";
 import "./News.css";
+import Word from "./Word";
 export default class News extends Component {
   constructor(props) {
     super(props);
@@ -58,16 +59,29 @@ export default class News extends Component {
             <div>{article.date}</div>
             <div>
               {article.contents.map(sentence => {
-                return sentence.content.length ? (
-                  <span
-                    className={`sentence sentence-${sentence.sentence_id}`}
-                    ref={`sentence-${sentence.sentence_id}`}
-                  >
-                    {sentence.content}
-                  </span>
-                ) : (
-                  <div className="spacing" />
-                );
+                if (sentence.content.length) {
+                  let text = sentence.content;
+                  selectedWordList.forEach(data => {
+                    if (text.indexOf(data.word) !== -1) {
+                      let splitArr = text.split(data.word);
+                      text = [
+                        splitArr[0],
+                        <Word grade={data.grade} data={data.word} />,
+                        splitArr[1]
+                      ];
+                    }
+                  });
+                  return (
+                    <span
+                      className={`sentence sentence-${sentence.sentence_id}`}
+                      ref={`sentence-${sentence.sentence_id}`}
+                    >
+                      {text}
+                    </span>
+                  );
+                } else {
+                  return <div className="spacing" />;
+                }
               })}
             </div>
             <div className="article-author">{article.author}</div>

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import ArticleList from "../../mock-ups/ArticleList";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../../data";
 import Category from "./Category";
 import Cookies from "js-cookie";
 import "./NewsList.css";
+import { ngramColor } from "../../data";
+import withRequest from "../withRequest";
 
-export default class Newses extends Component {
+class Newses extends Component {
   constructor(props) {
     super(props);
 
@@ -25,6 +27,9 @@ export default class Newses extends Component {
     // TODO: get Category News!
   };
   render() {
+    const { data } = this.props;
+    console.log("response", this.props);
+    const articleList = data ? data : [];
     return (
       <>
         <Category
@@ -38,15 +43,8 @@ export default class Newses extends Component {
           className="content"
         >
           <div className="news-ul">
-            {ArticleList.map(article => {
-              let totalWord = article.ngram.reduce((a, b) => a + b);
-              let ngramColor = [
-                "rgb(206,74,74)",
-                "rgb(234,175,65)",
-                "rgb(72,165,106)",
-                "rgb(102,136,195)",
-                "rgb(178,93,166)"
-              ];
+            {articleList.map(article => {
+              // let totalWord = article.ngram.reduce((a, b) => a + b);
               return (
                 <Link to={`news/${article.id}`}>
                   <div className="news-item">
@@ -61,7 +59,7 @@ export default class Newses extends Component {
                     <div className="news-item-title">{article.title}</div>
 
                     <div className="news-item-date">{article.date}</div>
-                    <div className="ngram-bar">
+                    {/* <div className="ngram-bar">
                       {article.ngram.map((ngram, i) => {
                         let percent = Math.round((ngram / totalWord) * 100);
                         var style = {
@@ -72,7 +70,7 @@ export default class Newses extends Component {
                           <div className="ngram-item" key={i} style={style} />
                         );
                       })}
-                    </div>
+                    </div> */}
                   </div>
                 </Link>
               );
@@ -83,3 +81,5 @@ export default class Newses extends Component {
     );
   }
 }
+
+export default withRequest(`${baseUrl}`)(Newses);

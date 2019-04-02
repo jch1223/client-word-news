@@ -19,7 +19,7 @@ export default class Signin extends Component {
           <input placeholder="비밀번호를 입력하세요." />
 
           <button>로그인</button>
-          <button>회원가입</button>
+          <button onClick={this.props.changeToSignUp}>회원가입</button>
         </div>
       </div>
     );

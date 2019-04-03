@@ -15,8 +15,5 @@
 }
 
 .category-select-button {
-  background-color: var(--light-font-color);
-  border-radius: 10px;
-
   cursor: pointer;
 }

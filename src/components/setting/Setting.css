@@ -1,14 +1,3 @@
-/* :root {
-  --main-color: rgb(77, 95, 200);
-  --dark-main-color: rgb(30, 39, 92);
-  --second-color: rgb(252, 205, 34);
-  --third-color: rgb(170, 170, 170);
-  --main-bg-color: rgb(255, 255, 255);
-  --light-font-color: rgb(255, 255, 255);
-  --dark-font-color: rgb(0, 0, 0);
-}
- */
-
 .lang-select-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -18,7 +7,7 @@
   display: flex;
   border: 2px var(--dark-font-color) solid;
   min-width: 100px;
-  height: 30px;
+  height: 50px;
   margin: 10px;
   justify-content: center;
   align-items: center;
@@ -39,7 +28,7 @@
   display: flex;
   border: 2px var(--dark-font-color) solid;
   min-width: 80px;
-  height: 30px;
+  height: 50px;
   margin: 10px;
   justify-content: center;
   align-items: center;
@@ -60,13 +49,29 @@
 .category-select-button {
   display: flex;
   border: 2px var(--dark-font-color) solid;
+  color: var(--light-font-color);
   /* min-width: 100px; */
   height: 100px;
   margin: 10px;
   justify-content: center;
   align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
+}
+.button {
+  font-size: 15pt;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.25s;
+  transition: background-color font-size;
 }
 
-.button {
+.button:hover {
+  font-size: 17pt;
   cursor: pointer;
+}
+
+.category-select-button:hover {
+  background-color: none;
 }

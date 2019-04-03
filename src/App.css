@@ -1,9 +1,9 @@
 :root {
-  --main-color: rgb(77, 95, 200);
+  --main-color: rgb(50, 119, 134);
   --dark-main-color: rgb(30, 39, 92);
-  --second-color: rgb(252, 205, 34);
-  --third-color: rgb(230, 230, 230);
-  --main-bg-color: rgb(255, 255, 255);
+  --second-color: rgb(0, 86, 104);
+  --third-color: rgb(153, 187, 194);
+  --main-bg-color: rgb(68, 85, 93);
   --light-font-color: rgb(255, 255, 255);
   --dark-font-color: rgb(0, 0, 0);
 }

@@ -4,7 +4,6 @@ import { baseUrl } from "../../data";
 import Category from "./Category";
 import Cookies from "js-cookie";
 import "./NewsList.css";
-import { ngramColor } from "../../data";
 import withRequest from "../withRequest";
 
 class Newses extends Component {

@@ -13,3 +13,17 @@
   height: 600px;
   background-color: var(--light-font-color);
 }
+.require-sign-in {
+  display: grid;
+  grid-template-rows: auto auto;
+  justify-items: center;
+  padding-top: 100px;
+  height: 100%;
+}
+
+.require-sign-in img {
+}
+
+.require-sign-in > h1 {
+  color: var(--light-font-color);
+}

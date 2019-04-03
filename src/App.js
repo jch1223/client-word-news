@@ -111,8 +111,11 @@ class App extends Component {
                 <Route path="/" exact component={NewsList} />
                 <Route
                   path="/words"
-                  component={Wordbook}
-                  showSignInModal={this.showSignInModal}
+                  render={() => {
+                    return (
+                      <Wordbook closeSignInModal={this.closeSignInModal} />
+                    );
+                  }}
                 />
                 <Route
                   path="/test"

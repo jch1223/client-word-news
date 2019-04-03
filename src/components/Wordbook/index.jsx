@@ -5,6 +5,7 @@ import WordbookData from "../../mock-ups/Wordbook";
 import WordTranslation from "./WordTranslation";
 import "./Wordbook.css";
 import withRequest from "../withRequest";
+import RequireSignIn from "../authentication/RequireSignIn";
 
 class Wordbook extends Component {
   constructor(props) {
@@ -121,8 +122,9 @@ class Wordbook extends Component {
       targetWord,
       showWordTranslation
     } = this.state;
+    const { closeSignInModal } = this.props;
     return !response ? (
-      <h1>로그인이 필요한 기능입니다.</h1>
+      <RequireSignIn closeSignInModal={closeSignInModal} />
     ) : (
       <>
         <WordTranslation

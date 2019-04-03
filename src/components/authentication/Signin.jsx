@@ -35,24 +35,25 @@ export default class Signin extends Component {
         }}
         style={{ display: display ? "block" : "none" }}
       >
-        <button
-          style={{ float: "right" }}
-          onClick={() => {
-            this.props.closeSignUpModal();
-          }}
-        >
-          X
-        </button>
         <div className="auth-modal">
+          <button
+            style={{ float: "right" }}
+            onClick={() => {
+              this.props.closeSignUpModal();
+            }}
+          >
+            X
+          </button>
           <h1>아이디</h1>
           <input placeholder="아이디를 입력하세요." defalutValue={id} />
           <h1>비밀번호</h1>
           <input placeholder="비밀번호를 입력하세요." defalutValue={pw} />
-
-          <button type="submit" onClick={this.submit}>
-            로그인
-          </button>
-          <button onClick={this.props.changeToSignUp}>회원가입</button>
+          <div>
+            <button type="submit" onClick={this.submit}>
+              로그인
+            </button>
+            <button onClick={this.props.changeToSignUp}>회원가입</button>
+          </div>
         </div>
       </div>
     );

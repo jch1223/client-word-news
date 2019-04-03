@@ -3,6 +3,7 @@ import RecommendWord from "./RecommendWord";
 import Data from "../../mock-ups/Article";
 import "./News.css";
 import Word from "./Word";
+
 export default class News extends Component {
   constructor(props) {
     super(props);

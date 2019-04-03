@@ -14,7 +14,7 @@
 @media screen and (max-width: 1100px) {
   .news-ul {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: auto auto;
     padding: auto;
     justify-items: center;
     list-style: none;
@@ -63,13 +63,20 @@
   object-fit: cover;
   overflow: hidden;
 }
+.news-item-title {
+  font-weight: bold;
+  color: var(--light-font-color);
+  font-size: 15pt;
+}
+.news-item-date {
+  float: right;
+  color: var(--light-font-color);
+}
+
 .ngram-bar {
   display: flex;
   height: 5px;
   position: absolute;
   bottom: 30px;
   width: 300px;
-}
-.news-item-title {
-  font-weight: bold;
 }

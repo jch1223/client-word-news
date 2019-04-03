@@ -8,6 +8,8 @@ import SelectMode from "./SelectMode";
 import TestMode from "./TestMode";
 import ResultMode from "./ResultMode";
 import withRequest from "../withRequest";
+import RequireSignIn from "../authentication/RequireSignIn";
+
 class Test extends Component {
   constructor(props) {
     super(props);
@@ -55,13 +57,7 @@ class Test extends Component {
       wrongAnswer
     } = this.state;
     if (!response) {
-      alert("로그인이 필요한 기능입니다.");
-      return (
-        <>
-          <SignIn display={true} closeSignInModal={() => {}} />
-          <h1>로그인이 필요한 기능입니다.</h1>
-        </>
-      );
+      return <RequireSignIn closeSignInModal={closeSignInModal} />;
       // this.props.showSignInModal();
     } else {
       return (

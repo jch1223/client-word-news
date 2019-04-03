@@ -28,8 +28,8 @@ class Newses extends Component {
   };
   render() {
     const { data } = this.props;
-    console.log("response", this.props);
     const articleList = data ? data : [];
+
     return (
       <>
         <Category
@@ -45,6 +45,7 @@ class Newses extends Component {
           <div className="news-ul">
             {articleList.map(article => {
               // let totalWord = article.ngram.reduce((a, b) => a + b);
+              console.log("photo url: ", article);
               return (
                 <Link to={`news/${article.id}`}>
                   <div className="news-item">
@@ -52,7 +53,7 @@ class Newses extends Component {
                       <img
                         alt={`thumbnail${article.id}`}
                         className="news-item-thumbnail"
-                        src={article.photoUrl}
+                        src={article.photoURL}
                       />
                     </div>
 

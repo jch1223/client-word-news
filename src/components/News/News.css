@@ -27,6 +27,8 @@ html {
   background-color: transparent;
   transition: background-color;
   transition-duration: 1s;
+
+  cursor: pointer;
 }
 .sentence-highlight {
   background-color: var(--second-color);

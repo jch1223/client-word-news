@@ -55,7 +55,6 @@ class Test extends Component {
       wrongAnswer
     } = this.state;
     if (!response) {
-      console.log(this.props);
       alert("로그인이 필요한 기능입니다.");
       return (
         <>

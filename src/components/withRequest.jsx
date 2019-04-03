@@ -9,7 +9,6 @@ const withRequest = url => WrappedComponent => {
       try {
         const res = await fetch(url);
         const json = await res.json();
-        console.log(json);
         this.setState({
           data: json
         });

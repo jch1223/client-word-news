@@ -3,13 +3,15 @@ import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import { Route, Link, Switch } from "react-router-dom";
 import logo from "./img/logo.png";
-import Newses from "./components/news-list";
+import NewsList from "./components/news-list";
 import News from "./components/news";
 import Wordbook from "./components/wordbook";
 import Test from "./components/test";
 import Setting from "./components/setting";
 import Signin from "./components/authentication/Signin";
 import Signup from "./components/authentication/Signup";
+import NotFound from "./components/not-found";
+import { NavLink } from "react-router-dom/cjs/react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -64,21 +66,23 @@ class App extends Component {
                 display={showSignUp}
               />
               <div className="nav-menu">
-                <Link to={"/"}>
+                <NavLink exact to={"/"}>
                   <img alt="logo" src={logo} className="nav-logo" />
-                </Link>
+                </NavLink>
                 <ul className="nav-ul">
                   <li className="nav-item">
-                    <Link to={"/"}>News</Link>
+                    <NavLink exact to={"/"}>
+                      News
+                    </NavLink>
                   </li>
                   <li className="nav-item">
-                    <Link to={"/words"}>Wordbook</Link>
+                    <NavLink to={"/words"}>Wordbook</NavLink>
                   </li>
                   <li className="nav-item">
-                    <Link to={"/test"}>Test</Link>
+                    <NavLink to={"/test"}>Test</NavLink>
                   </li>
                   <li className="nav-item">
-                    <Link to={"/setting"}>Setting</Link>
+                    <NavLink to={"/setting"}>Setting</NavLink>
                   </li>
                   <li className="nav-item">
                     <a
@@ -105,7 +109,7 @@ class App extends Component {
                 </ul>
               </div>
               <Switch>
-                <Route path="/" exact component={Newses} />
+                <Route path="/" exact component={NewsList} />
                 <Route
                   path="/words"
                   component={Wordbook}
@@ -119,11 +123,7 @@ class App extends Component {
                 />
                 <Route path="/setting" component={Setting} />
                 <Route path="/news/:id" component={News} />
-                <Route
-                  exact
-                  path="/news"
-                  render={() => <h3>Please select a topic.</h3>}
-                />
+                <Route component={NotFound} />
               </Switch>
             </nav>
           </div>

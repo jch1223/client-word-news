@@ -7,7 +7,6 @@ export default class TestMode extends Component {
   };
   render() {
     const { display, question } = this.props;
-    console.log(question);
     return (
       <div style={{ display: display ? "block" : "none" }}>
         <h1>{question.word}</h1>

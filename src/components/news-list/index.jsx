@@ -4,6 +4,7 @@ import { baseUrl } from "../../data";
 import Category from "./Category";
 import Cookies from "js-cookie";
 import "./NewsList.css";
+import thumbnail from "../../img/logo-icon.png";
 import withRequest from "../withRequest";
 
 class Newses extends Component {
@@ -44,7 +45,6 @@ class Newses extends Component {
           <div className="news-ul">
             {articleList.map(article => {
               // let totalWord = article.ngram.reduce((a, b) => a + b);
-              console.log("photo url: ", article);
               return (
                 <Link to={`news/${article.id}`}>
                   <div className="news-item">
@@ -52,7 +52,7 @@ class Newses extends Component {
                       <img
                         alt={`thumbnail${article.id}`}
                         className="news-item-thumbnail"
-                        src={article.photoURL}
+                        src={article.photoURL ? article.photoURL : thumbnail}
                       />
                     </div>
 

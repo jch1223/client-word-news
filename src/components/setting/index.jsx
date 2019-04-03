@@ -48,7 +48,6 @@ export default class Setting extends Component {
   }
 
   selectedLanguage = index => {
-    console.log("called");
     alert("준비중입니다.");
     // this.setState({
     //   selectedCategory: index

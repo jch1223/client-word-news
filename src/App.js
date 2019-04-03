@@ -46,7 +46,6 @@ class App extends Component {
     this.showSignUpModal();
   };
   goBack = () => {
-    console.log(this.props.history);
     this.props.history.goBack();
   };
   render() {

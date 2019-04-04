@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-const withRequest = url => WrappedComponent => {
+const withRequest = (url, option) => WrappedComponent => {
   return class extends Component {
     state = {
       response: null
     };
     async initialize() {
       try {
-        const res = await fetch(url);
+        const res = await fetch(url, option);
         const json = await res.json();
         this.setState({
           data: json

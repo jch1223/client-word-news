@@ -47,6 +47,7 @@ export default class Signin extends Component {
           <h1>아이디</h1>
           <input
             placeholder="아이디를 입력하세요."
+            className="auth-input"
             onKeyUp={e => {
               this.setState({ id: e.target.value });
             }}
@@ -56,16 +57,26 @@ export default class Signin extends Component {
           <input
             placeholder="비밀번호를 입력하세요."
             type="password"
+            className="auth-input"
             onKeyUp={e => {
               this.setState({ pw: e.target.value });
             }}
             defalutValue={pw}
           />
           <div>
-            <button type="submit" onClick={this.submit}>
+            <button
+              type="submit"
+              className="auth-button button"
+              onClick={this.submit}
+            >
               로그인
             </button>
-            <button onClick={this.props.changeToSignUp}>회원가입</button>
+            <button
+              onClick={this.props.changeToSignUp}
+              className="auth-button button"
+            >
+              회원가입
+            </button>
           </div>
         </div>
       </div>

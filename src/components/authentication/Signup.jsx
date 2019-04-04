@@ -51,6 +51,7 @@ export default class Signin extends Component {
           <input
             className="auth-input"
             defaultValue={this.state.id}
+            className="auth-input"
             placeholder="아이디를 입력하세요."
             onKeyPressed={e => {
               this.setState({
@@ -63,6 +64,7 @@ export default class Signin extends Component {
             className="auth-input"
             type="password"
             defaultValue={this.state.pw}
+            className="auth-input"
             placeholder="비밀번호를 입력하세요."
             onKeyPressed={e => {
               this.setState({
@@ -75,6 +77,7 @@ export default class Signin extends Component {
             className="auth-input"
             type="email"
             defaultValue={this.state.email}
+            className="auth-input"
             onChange={e => {
               this.setState({
                 email: e.target.value
@@ -82,7 +85,11 @@ export default class Signin extends Component {
             }}
             placeholder="이메일 주소를 입력하세요."
           />
-          <button type="submit" onClick={this.submit}>
+          <button
+            type="submit"
+            className="auth-button button"
+            onClick={this.submit}
+          >
             확인
           </button>
         </div>

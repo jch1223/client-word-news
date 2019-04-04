@@ -5,17 +5,15 @@
   "dependencies": {
     "js-cookie": "^2.2.0",
     "jsdom": "^14.0.0",
-    "node-sass": "^4.11.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "predeploy": "react-scripts build",
-    "deploy": "aws s3 cp ./build s3://word-news.training --recursive",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -28,9 +26,24 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
   "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "eslint-plugin-react": "^7.12.4",
     "prettier": "^1.16.4",
-    "prettier-eslint": "^8.8.2"
+    "prettier-eslint": "^8.8.2",
+    "webpack": "4.28.3",
+    "webpack-cli": "^3.3.0"
   }
 }

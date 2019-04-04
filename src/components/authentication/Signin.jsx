@@ -21,6 +21,9 @@ export default class Signin extends Component {
     }).then(res => {
       if (res.ok) {
         this.props.closeSignInModal();
+        this.props.setSignIn();
+      } else {
+        alert("아이디와 비밀번호를 확인해 주세요.");
       }
     });
   };
@@ -30,9 +33,6 @@ export default class Signin extends Component {
     return (
       <div
         className="modal-background"
-        onClick={() => {
-          this.props.closeSignInModal();
-        }}
         style={{ display: display ? "block" : "none" }}
       >
         <div className="auth-modal">
@@ -45,9 +45,22 @@ export default class Signin extends Component {
             X
           </button>
           <h1>아이디</h1>
-          <input placeholder="아이디를 입력하세요." defalutValue={id} />
+          <input
+            placeholder="아이디를 입력하세요."
+            onKeyUp={e => {
+              this.setState({ id: e.target.value });
+            }}
+            defalutValue={id}
+          />
           <h1>비밀번호</h1>
-          <input placeholder="비밀번호를 입력하세요." defalutValue={pw} />
+          <input
+            placeholder="비밀번호를 입력하세요."
+            type="password"
+            onKeyUp={e => {
+              this.setState({ pw: e.target.value });
+            }}
+            defalutValue={pw}
+          />
           <div>
             <button type="submit" onClick={this.submit}>
               로그인

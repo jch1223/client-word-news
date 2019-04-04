@@ -56,27 +56,27 @@ class Test extends Component {
       correctAnswer,
       wrongAnswer
     } = this.state;
-    if (!response) {
-      return <RequireSignIn closeSignInModal={closeSignInModal} />;
-      // this.props.showSignInModal();
-    } else {
-      return (
-        <div className="content">
-          <SelectMode display={selectMode} />
-          <TestMode
-            display={testMode}
-            question={Questions[currentQuestionIndex]}
-            isCorrect={this.isCorrect}
-            nextQuestion={this.nextQuestion}
-          />
-          <ResultMode
-            result={{ correct: correctAnswer, wrong: wrongAnswer }}
-            display={resultMode}
-          />
-        </div>
-      );
-    }
+    // if (!response) {
+    //   return <RequireSignIn closeSignInModal={closeSignInModal} />;
+    //   // this.props.showSignInModal();
+    // } else {
+    return (
+      <div className="content">
+        <SelectMode display={selectMode} />
+        <TestMode
+          display={testMode}
+          question={Questions[currentQuestionIndex]}
+          isCorrect={this.isCorrect}
+          nextQuestion={this.nextQuestion}
+        />
+        <ResultMode
+          result={{ correct: correctAnswer, wrong: wrongAnswer }}
+          display={resultMode}
+        />
+      </div>
+    );
   }
+  // }
 }
 export default withRequest(`${baseUrl}/api/words/${formatted(new Date())}`)(
   Test

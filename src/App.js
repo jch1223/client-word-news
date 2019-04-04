@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import { Route, Link, Switch } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "./img/logo.png";
 import NewsList from "./components/news-list";
 import News from "./components/news";
@@ -11,16 +12,27 @@ import Setting from "./components/setting";
 import Signin from "./components/authentication/Signin";
 import Signup from "./components/authentication/Signup";
 import NotFound from "./components/not-found";
-import { NavLink } from "react-router-dom/cjs/react-router-dom";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showSignIn: false,
-      showSignUp: false
+      showSignUp: false,
+      signIn: false
     };
   }
+  setSignIn = () => {
+    this.setState({
+      signIn: true
+    });
+  };
+  setSignOut = () => {
+    // TODO: set Sign out - remove token
+    this.setState({
+      signIn: false
+    });
+  };
   showSignInModal = () => {
     this.setState({
       showSignIn: true
@@ -49,7 +61,7 @@ class App extends Component {
     this.props.history.goBack();
   };
   render() {
-    const { showSignIn, showSignUp } = this.state;
+    const { showSignIn, showSignUp, setSignIn } = this.state;
     return (
       <BrowserRouter>
         <div className="App">
@@ -83,28 +95,36 @@ class App extends Component {
                   <li className="nav-item">
                     <NavLink to={"/setting"}>Setting</NavLink>
                   </li>
-                  <li className="nav-item">
-                    <a
-                      onClick={() => {
-                        this.setState({
-                          showSignIn: true
-                        });
-                      }}
-                    >
-                      Sign In
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      onClick={() => {
-                        this.setState({
-                          showSignUp: true
-                        });
-                      }}
-                    >
-                      Sign Up
-                    </a>
-                  </li>
+                  {setSignIn ? (
+                    <li className="nav-item">
+                      <a onClick={this.setSignOut}>Sign Out</a>
+                    </li>
+                  ) : (
+                    <>
+                      <li className="nav-item">
+                        <a
+                          onClick={() => {
+                            this.setState({
+                              showSignIn: true
+                            });
+                          }}
+                        >
+                          Sign In
+                        </a>
+                      </li>
+                      <li className="nav-item">
+                        <a
+                          onClick={() => {
+                            this.setState({
+                              showSignUp: true
+                            });
+                          }}
+                        >
+                          Sign Up
+                        </a>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
               <Switch>

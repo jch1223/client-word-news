@@ -9,6 +9,16 @@ exports.categoryList = [
   "스포츠",
   "월드"
 ];
+exports.categoryCode = [
+  "culture",
+  "hotTopic",
+  "economy",
+  "national",
+  "bizTech",
+  "sports",
+  "entertainment",
+  "world"
+];
 
 exports.ngramColor = [
   "rgb(206,74,74)",
@@ -17,3 +27,5 @@ exports.ngramColor = [
   "rgb(102,136,195)",
   "rgb(178,93,166)"
 ];
+exports.dictionaryAPI =
+  "Ds79SQngVBHayFrbxGCWKaCaNqt2tlj3oWTESXw3Gc2db7N65HYDVXEJfAWLfmtH";

@@ -1,0 +1,53 @@
+/* test page */
+
+.test-container {
+  width: 300px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 100px;
+
+  background-color: var(--third-color);
+}
+.test-word {
+  font-size: 30pt;
+  margin: 0;
+}
+.test-selections {
+  margin-top: 50px;
+}
+
+.test-selection {
+  margin: 10px 0;
+  padding: 10px;
+
+  border: var(--main-color) 2px solid;
+  border-radius: 10px;
+}
+.test-selection:hover {
+  background-color: var(--second-color);
+  color: var(--light-font-color);
+}
+
+.test-selection-number {
+  margin-right: 15px;
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+/* result page */
+
+.result-box-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.result-box img {
+  width: 100px;
+}
+.result-box h1 {
+  text-align: center;
+}
+.result-box {
+  display: inline-block;
+}

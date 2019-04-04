@@ -117,6 +117,7 @@ html {
   color: var(--third-color);
 }
 .save-button {
+  color: var(--third-color);
 }
 
 /* loading icon */
@@ -125,6 +126,8 @@ html {
   position: relative;
   width: 64px;
   height: 64px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 .lds-ring div {
   box-sizing: border-box;

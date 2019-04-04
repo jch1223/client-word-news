@@ -123,9 +123,10 @@ class Wordbook extends Component {
       showWordTranslation
     } = this.state;
     const { closeSignInModal } = this.props;
-    return !response ? (
-      <RequireSignIn closeSignInModal={closeSignInModal} />
-    ) : (
+    // return !response ? (
+    //   <RequireSignIn closeSignInModal={closeSignInModal} />
+    // ) : (
+    return (
       <>
         <WordTranslation
           className="modal-background"

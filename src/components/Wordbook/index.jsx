@@ -122,31 +122,40 @@ class Wordbook extends Component {
       targetWord,
       showWordTranslation
     } = this.state;
-    const { closeSignInModal } = this.props;
+    const { closeSignInModal, isSignIn, setSignIn } = this.props;
     // return !response ? (
-    //   <RequireSignIn closeSignInModal={closeSignInModal} />
+    //
     // ) : (
-    return (
+    return isSignIn ? (
       <>
         <WordTranslation
           className="modal-background"
           targetWord={targetWord}
-          closeWordTranslation={this.closeWordTranslation.bind(this)}
+          closeWordTranslation={this.closeWordTranslation}
           display={{ display: showWordTranslation ? "block" : "none" }}
         />
         <div className="content">
-          <div className="select-date">
+          <div className="select-option">
             <input
               type="date"
               className="datepicker"
               onChange={this.changeDate}
               selected={date}
             />
-            <button onClick={this.showAll}>모든 단어 보기</button>
+            <button onClick={() => {}} className="wordbook-button button">
+              날짜별 보기
+            </button>
+            <button onClick={this.showAll} className="wordbook-button button">
+              모든 날짜 단어 보기
+            </button>
+            <button
+              onClick={this.toggleShowWord}
+              className="wordbook-button button"
+            >
+              단어만 보기
+            </button>
           </div>
-          <div className="wordToggle">
-            <button onClick={this.toggleShowWord}>단어만 보기</button>
-          </div>
+          <div className="wordToggle" />
           {words.map((word, i) => {
             return (
               <div key={word.wordbook_id} id={i} className="word-item">
@@ -173,6 +182,11 @@ class Wordbook extends Component {
           })}
         </div>
       </>
+    ) : (
+      <RequireSignIn
+        closeSignInModal={closeSignInModal}
+        setSignIn={setSignIn}
+      />
     );
   }
 }

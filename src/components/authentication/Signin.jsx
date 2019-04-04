@@ -28,7 +28,7 @@ export default class Signin extends Component {
     });
   };
   render() {
-    const { display } = this.props;
+    const { display, closeSignInModal } = this.props;
     const { id, pw } = this.state;
     return (
       <div
@@ -39,7 +39,7 @@ export default class Signin extends Component {
           <button
             style={{ float: "right" }}
             onClick={() => {
-              this.props.closeSignUpModal();
+              closeSignInModal();
             }}
           >
             X

@@ -2,7 +2,21 @@ input[type="date"] {
   background: transparent;
   border: transparent 0px;
 }
+.datepicker {
+  font-size: 20pt;
+  color: var(--light-font-color);
+}
+.select-option {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
+.wordbook-button {
+  margin: 20px 10px;
+  padding: 10px;
+  border: transparent;
+}
 .word-item {
   display: flex;
   justify-content: space-between;

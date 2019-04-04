@@ -29,6 +29,7 @@ class App extends Component {
   };
   setSignOut = () => {
     // TODO: set Sign out - remove token
+    alert("로그아웃 되었습니다.");
     this.setState({
       signIn: false
     });
@@ -61,13 +62,14 @@ class App extends Component {
     this.props.history.goBack();
   };
   render() {
-    const { showSignIn, showSignUp, setSignIn } = this.state;
+    const { showSignIn, showSignUp, signIn } = this.state;
     return (
       <BrowserRouter>
         <div className="App">
           <div className="header">
             <nav className="nav">
               <Signin
+                setSignIn={this.setSignIn}
                 closeSignInModal={this.closeSignInModal}
                 changeToSignUp={this.changeToSignUp}
                 display={showSignIn}
@@ -81,6 +83,11 @@ class App extends Component {
                   <img alt="logo" src={logo} className="nav-logo" />
                 </NavLink>
                 <ul className="nav-ul">
+                  <span class="navicon">
+                    <div />
+                    <div />
+                    <div />
+                  </span>
                   <li className="nav-item">
                     <NavLink exact to={"/"}>
                       News
@@ -95,7 +102,7 @@ class App extends Component {
                   <li className="nav-item">
                     <NavLink to={"/setting"}>Setting</NavLink>
                   </li>
-                  {setSignIn ? (
+                  {signIn ? (
                     <li className="nav-item">
                       <a onClick={this.setSignOut}>Sign Out</a>
                     </li>
@@ -114,6 +121,7 @@ class App extends Component {
                       </li>
                       <li className="nav-item">
                         <a
+                          closeSignUpModal={this.closeSignUpModal}
                           onClick={() => {
                             this.setState({
                               showSignUp: true
@@ -128,23 +136,47 @@ class App extends Component {
                 </ul>
               </div>
               <Switch>
-                <Route path="/" exact component={NewsList} />
+                <Route
+                  path="/"
+                  exact
+                  render={() => {
+                    return <NewsList isSignIn={signIn} />;
+                  }}
+                />
                 <Route
                   path="/words"
                   render={() => {
                     return (
-                      <Wordbook closeSignInModal={this.closeSignInModal} />
+                      <Wordbook
+                        isSignIn={signIn}
+                        setSignIn={this.setSignIn}
+                        closeSignInModal={this.closeSignInModal}
+                      />
                     );
                   }}
                 />
                 <Route
                   path="/test"
                   render={() => (
-                    <Test closeSignInModal={this.closeSignInModal} />
+                    <Test
+                      isSignIn={signIn}
+                      setSignIn={this.setSignIn}
+                      closeSignInModal={this.closeSignInModal}
+                    />
                   )}
                 />
-                <Route path="/setting" component={Setting} />
-                <Route path="/news/:id" component={News} />
+                <Route
+                  path="/setting"
+                  render={() => {
+                    return <Setting isSignIn={signIn} />;
+                  }}
+                />
+                <Route
+                  path="/news/:id"
+                  render={() => {
+                    return <News isSignIn={signIn} />;
+                  }}
+                />
                 <Route component={NotFound} />
               </Switch>
             </nav>

@@ -75,11 +75,8 @@
   user-select: none;
 }
 
-.button:hover {
-  font-size: 17pt;
-  cursor: pointer;
-}
-
 .category-select-button:hover {
   background-color: none;
+  font-size: 17pt;
+  cursor: pointer;
 }

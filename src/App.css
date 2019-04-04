@@ -37,6 +37,31 @@ body {
   padding: 26px 0;
   margin-right: 35px;
 }
+@media screen and (max-width: 850px) {
+  .nav-ul {
+    display: block;
+    position: absolute;
+    margin: 0;
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    z-index: 2;
+    width: 100%;
+    background-color: var(--main-bg-color);
+  }
+}
+.navicon {
+  cursor: pointer;
+  display: none;
+  position: relative;
+  user-select: none;
+}
+.navicon > div {
+  width: 30px;
+  height: 5px;
+  margin-top: 5px;
+  background-color: black;
+}
 
 .nav-item {
   display: inline-block;
@@ -45,6 +70,16 @@ body {
   text-align: center;
   margin: 0;
   cursor: pointer;
+}
+@media screen and (max-width: 850px) {
+  .nav-item {
+    display: block;
+    line-height: 100%;
+    text-align: center;
+    padding: 30px 0;
+    cursor: pointer;
+    border-top: var(--light-font-color) 2px solid;
+  }
 }
 
 .nav-item > a {
@@ -57,6 +92,12 @@ body {
 .nav-item > a.active {
   font-weight: bold;
   border-top: white solid 2px;
+}
+@media screen and (max-width: 850px) {
+  .nav-item > a.active {
+    font-weight: bold;
+    border-top: transparent solid 2px;
+  }
 }
 .content {
   position: absolute;

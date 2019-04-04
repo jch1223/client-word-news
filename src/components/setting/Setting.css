@@ -51,7 +51,7 @@
   border: 2px var(--dark-font-color) solid;
   color: var(--light-font-color);
   /* min-width: 100px; */
-  height: 100px;
+  height: 200px;
   margin: 10px;
   justify-content: center;
   align-items: center;

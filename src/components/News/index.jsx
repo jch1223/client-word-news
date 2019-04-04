@@ -57,8 +57,8 @@ export default class News extends Component {
             <div className="article-photo-container">
               <img alt={article.title} src={article.photoUrl} />
             </div>
-            <div>{article.date}</div>
-            <div>
+            <div className="news-text">
+              <div>{article.date}</div>
               {article.contents.map(sentence => {
                 if (sentence.content.length) {
                   let text = sentence.content;
@@ -85,8 +85,6 @@ export default class News extends Component {
                 }
               })}
             </div>
-            <div className="article-author">{article.author}</div>
-            <div className="article-publisher">출처: {article.publisher}</div>
           </div>
           <div className="recommend-words-container">
             <h1 className="recommend-words-title">words</h1>

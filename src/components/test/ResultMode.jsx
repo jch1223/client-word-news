@@ -4,7 +4,7 @@ import incorrect from "../../img/incorrect.png";
 
 export default class ResultMode extends Component {
   render() {
-    const { display, result } = this.props;
+    const { display, result, showSelectMode } = this.props;
     return (
       <div className="test-container">
         <div
@@ -21,6 +21,9 @@ export default class ResultMode extends Component {
               <h1>{result.wrong}</h1>
             </div>
           </div>
+          <button onClick={showSelectMode} className="test-button">
+            테스트 다시보기
+          </button>
         </div>
       </div>
     );

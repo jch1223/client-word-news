@@ -15,8 +15,8 @@ class Test extends Component {
     super(props);
   }
   state = {
-    selectMode: false,
-    testMode: true,
+    selectMode: true,
+    testMode: false,
     resultMode: false,
     currentQuestionIndex: 0,
     correctAnswer: 0,
@@ -46,6 +46,18 @@ class Test extends Component {
       });
     }
   };
+  showSelectMode = () => {
+    this.setState({
+      selectMode: true,
+      resultMode: false
+    });
+  };
+  showTestMode = () => {
+    this.setState({
+      testMode: true,
+      selectMode: false
+    });
+  };
   render() {
     const { response, closeSignInModal } = this.props;
     const {
@@ -62,7 +74,7 @@ class Test extends Component {
     // } else {
     return (
       <div className="content">
-        <SelectMode display={selectMode} />
+        <SelectMode display={selectMode} showTestMode={this.showTestMode} />
         <TestMode
           display={testMode}
           question={Questions[currentQuestionIndex]}
@@ -72,6 +84,7 @@ class Test extends Component {
         <ResultMode
           result={{ correct: correctAnswer, wrong: wrongAnswer }}
           display={resultMode}
+          showSelectMode={this.showSelectMode}
         />
       </div>
     );

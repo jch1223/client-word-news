@@ -26,12 +26,12 @@ class Wordbook extends Component {
     this.state = {
       showWord: true,
       words: WordbookData,
-      date: dateString,
+      dateString: dateString,
       showWordTranslation: false,
       targetWord: undefined
     };
   }
-  _getWordList = (year, month, date) => {
+  _getWordList = dateString => {
     if (typeof year === "undefined") {
       fetch(baseUrl + `/api/words`)
         .then(result => {
@@ -43,7 +43,7 @@ class Wordbook extends Component {
           });
         });
     } else {
-      fetch(baseUrl + `/api/words/${year}/${month}/${date}`)
+      fetch(baseUrl + `/api/words/${dateString}`)
         .then(result => {
           return result.json();
         })
@@ -67,7 +67,7 @@ class Wordbook extends Component {
   };
   changeDate = e => {
     this.setState({
-      date: e.target.value
+      dateString: e.target.value
     });
   };
   completeWord = e => {
@@ -86,15 +86,22 @@ class Wordbook extends Component {
       return result;
     });
   };
-  showAll = e => {
-    fetch(baseUrl + `/api/words`)
-      .then(result => {
-        return result.json();
+  showWordbook = (dateString = "") => {
+    fetch(baseUrl + `/api/words/${dateString}`)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error(res.message);
+        }
       })
       .then(data => {
         this.setState({
           words: data
         });
+      })
+      .catch(err => {
+        alert(err);
       });
   };
   showLater = e => {
@@ -116,7 +123,7 @@ class Wordbook extends Component {
   render() {
     let {
       response,
-      date,
+      dateString,
       showWord,
       words,
       targetWord,
@@ -140,12 +147,20 @@ class Wordbook extends Component {
               type="date"
               className="datepicker"
               onChange={this.changeDate}
-              selected={date}
+              selected={dateString}
             />
-            <button onClick={() => {}} className="wordbook-button button">
+            <button
+              onClick={() => {
+                this.showWordbook(dateString);
+              }}
+              className="wordbook-button button"
+            >
               날짜별 보기
             </button>
-            <button onClick={this.showAll} className="wordbook-button button">
+            <button
+              onClick={this.showWordbook}
+              className="wordbook-button button"
+            >
               모든 날짜 단어 보기
             </button>
             <button

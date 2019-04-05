@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import { formatted } from "../../util/datetime";
 import { baseUrl } from "../../data";
-import SignIn from "../authentication/Signin";
 import SelectMode from "./SelectMode";
 import TestMode from "./TestMode";
 import ResultMode from "./ResultMode";
@@ -121,7 +120,6 @@ class Test extends Component {
       <RequireSignIn
         closeSignInModal={closeSignInModal}
         setSignIn={setSignIn}
-        closeSignInModal={closeSignInModal}
         showSignIn={showSignIn}
       />
     );

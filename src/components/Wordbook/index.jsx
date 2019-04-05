@@ -122,7 +122,7 @@ class Wordbook extends Component {
       targetWord,
       showWordTranslation
     } = this.state;
-    const { closeSignInModal, isSignIn, setSignIn } = this.props;
+    const { closeSignInModal, isSignIn, setSignIn, showSignIn } = this.props;
     // return !response ? (
     //
     // ) : (
@@ -186,6 +186,8 @@ class Wordbook extends Component {
       <RequireSignIn
         closeSignInModal={closeSignInModal}
         setSignIn={setSignIn}
+        showSignIn={showSignIn}
+        closeSignInModal={closeSignInModal}
       />
     );
   }

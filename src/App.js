@@ -22,6 +22,12 @@ class App extends Component {
       signIn: false
     };
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    const signInModalChange = this.state.showSignIn !== nextState.showSignIn;
+    const signUpModalChange = this.state.showSignUp !== nextState.showSignUp;
+    const signInChange = this.state.signIn !== nextState.signIn;
+    return signInModalChange || signUpModalChange || signInChange;
+  }
   showNavMenu = () => {
     // showMenu;
   };
@@ -153,6 +159,7 @@ class App extends Component {
                       <Wordbook
                         isSignIn={signIn}
                         setSignIn={this.setSignIn}
+                        showSignIn={this.showSignInModal}
                         closeSignInModal={this.closeSignInModal}
                       />
                     );
@@ -164,6 +171,7 @@ class App extends Component {
                     <Test
                       isSignIn={signIn}
                       setSignIn={this.setSignIn}
+                      showSignIn={this.showSignInModal}
                       closeSignInModal={this.closeSignInModal}
                     />
                   )}

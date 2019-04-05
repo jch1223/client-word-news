@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Auth.css";
 import { baseUrl } from "../../data";
+import Cookies from "js-cookie";
 
 export default class Signin extends Component {
   state = {
@@ -10,10 +11,11 @@ export default class Signin extends Component {
   };
   submit = () => {
     const { id, pw, email } = this.state;
+    console.log(id, pw, email);
     fetch(`${baseUrl}/api/sign/signup`, {
       method: "POST",
-      head: {
-        "Content-Type": "application/json"
+      headers: {
+        "content-type": "application/json"
       },
       body: JSON.stringify({
         user_name: id,
@@ -21,8 +23,7 @@ export default class Signin extends Component {
         email: email,
         target_lang: "en",
         user_lang: "kr",
-        level: 1,
-        categort_id: 1
+        level: parseInt(Cookies.get("level"))
       })
     }).then(res => {
       if (res.ok) {
@@ -55,7 +56,7 @@ export default class Signin extends Component {
             defaultValue={this.state.id}
             className="auth-input"
             placeholder="아이디를 입력하세요."
-            onKeyPressed={e => {
+            onKeyUp={e => {
               this.setState({
                 id: e.target.value
               });
@@ -68,7 +69,7 @@ export default class Signin extends Component {
             defaultValue={this.state.pw}
             className="auth-input"
             placeholder="비밀번호를 입력하세요."
-            onKeyPressed={e => {
+            onKeyUp={e => {
               this.setState({
                 pw: e.target.value
               });
@@ -80,7 +81,7 @@ export default class Signin extends Component {
             type="email"
             defaultValue={this.state.email}
             className="auth-input"
-            onChange={e => {
+            onKeyUp={e => {
               this.setState({
                 email: e.target.value
               });

@@ -81,4 +81,4 @@ class Newses extends Component {
     );
   }
 }
-export default withRequest(`${baseUrl}/api`)(Newses);
+export default withRequest(`${baseUrl}`)(Newses);

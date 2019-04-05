@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Questions from "../../mock-ups/Test";
 
 import { formatted } from "../../util/datetime";
 import { baseUrl } from "../../data";
@@ -20,7 +19,8 @@ class Test extends Component {
     resultMode: false,
     currentQuestionIndex: 0,
     correctAnswer: 0,
-    wrongAnswer: 0
+    wrongAnswer: 0,
+    questions: undefined
   };
   isCorrect = result => {
     if (result) {
@@ -35,7 +35,7 @@ class Test extends Component {
   };
   nextQuestion = () => {
     const currentQuestionIndex = this.state.currentQuestionIndex;
-    if (currentQuestionIndex + 1 < Questions.length) {
+    if (currentQuestionIndex + 1 < this.state.questions.length) {
       this.setState({
         currentQuestionIndex: this.state.currentQuestionIndex + 1
       });
@@ -52,21 +52,47 @@ class Test extends Component {
       resultMode: false
     });
   };
-  showTestMode = () => {
-    this.setState({
-      testMode: true,
-      selectMode: false
-    });
+  showTestMode = dateString => {
+    fetch(`${baseUrl}/api/test/${dateString}`)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw Error(res.status);
+        }
+      })
+      .then(data => {
+        this.setState({
+          testMode: true,
+          selectMode: false,
+          questions: data
+        });
+      })
+      .catch(err => {
+        console.log(err.message);
+        if (err.message === "404") {
+          alert("해당 날짜에 만들어진 단어장이 없습니다.");
+        } else {
+          alert(err.message);
+        }
+      });
   };
   render() {
-    const { response, closeSignInModal, isSignIn, setSignIn } = this.props;
+    const {
+      response,
+      closeSignInModal,
+      isSignIn,
+      setSignIn,
+      showSignIn
+    } = this.props;
     const {
       selectMode,
       testMode,
       resultMode,
       currentQuestionIndex,
       correctAnswer,
-      wrongAnswer
+      wrongAnswer,
+      questions
     } = this.state;
     // if (!response) {
     //   return ;
@@ -75,12 +101,16 @@ class Test extends Component {
     return isSignIn ? (
       <div className="content">
         <SelectMode display={selectMode} showTestMode={this.showTestMode} />
-        <TestMode
-          display={testMode}
-          question={Questions[currentQuestionIndex]}
-          isCorrect={this.isCorrect}
-          nextQuestion={this.nextQuestion}
-        />
+        {testMode ? (
+          <TestMode
+            display={testMode}
+            question={questions ? questions[currentQuestionIndex] : {}}
+            isCorrect={this.isCorrect}
+            nextQuestion={this.nextQuestion}
+          />
+        ) : (
+          <></>
+        )}
         <ResultMode
           result={{ correct: correctAnswer, wrong: wrongAnswer }}
           display={resultMode}
@@ -91,6 +121,8 @@ class Test extends Component {
       <RequireSignIn
         closeSignInModal={closeSignInModal}
         setSignIn={setSignIn}
+        closeSignInModal={closeSignInModal}
+        showSignIn={showSignIn}
       />
     );
   }

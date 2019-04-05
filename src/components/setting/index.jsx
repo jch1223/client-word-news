@@ -66,7 +66,12 @@ export default class Setting extends Component {
     });
     fetch(`${baseUrl}/api/category`, {
       method: "POST",
-      categoryId: index
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        categoryId: index
+      })
     }).then(res => {
       if (res.ok) {
         console.log(res);

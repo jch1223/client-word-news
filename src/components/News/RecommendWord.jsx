@@ -32,6 +32,9 @@ export default class RecommendWord extends Component {
   saveWord() {
     fetch(baseUrl + `/api/news/${this.articleId}/word`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: {
         word_id: this.selectedWord.word_id,
         sentence_id: this.selectedWord.sentence_id

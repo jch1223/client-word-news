@@ -11,7 +11,7 @@ export default class Signin extends Component {
     const { id, pw } = this.state;
     fetch(`${baseUrl}/api/sign/signin`, {
       method: "POST",
-      header: {
+      headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({

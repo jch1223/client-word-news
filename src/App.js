@@ -22,6 +22,9 @@ class App extends Component {
       signIn: false
     };
   }
+  showNavMenu = () => {
+    // showMenu;
+  };
   setSignIn = () => {
     this.setState({
       signIn: true
@@ -82,12 +85,12 @@ class App extends Component {
                 <NavLink exact to={"/"}>
                   <img alt="logo" src={logo} className="nav-logo" />
                 </NavLink>
+                <span class="navicon" onClick={this.showNavMenu}>
+                  <div />
+                  <div />
+                  <div />
+                </span>
                 <ul className="nav-ul">
-                  <span class="navicon">
-                    <div />
-                    <div />
-                    <div />
-                  </span>
                   <li className="nav-item">
                     <NavLink exact to={"/"}>
                       News

@@ -3,6 +3,7 @@ import RecommendWord from "./RecommendWord";
 import Data from "../../mock-ups/Article";
 import "./News.css";
 import Word from "./Word";
+import Cookies from "js-cookie";
 
 export default class News extends Component {
   constructor(props) {
@@ -32,7 +33,10 @@ export default class News extends Component {
 
     // Dummy
     this.article = Data.article;
-    this.selectedWordList = Data.words;
+    const userLevel = parseInt(Cookies.get("level"));
+    this.selectedWordList = Data.words.filter(word => {
+      return userLevel <= word.grade;
+    });
   }
   highlightSentence = sentenceId => {
     // scroll to the sentence
@@ -58,7 +62,7 @@ export default class News extends Component {
               <img alt={article.title} src={article.photoUrl} />
             </div>
             <div className="news-text">
-              <div>{article.date}</div>
+              {/* <div>{article.date}</div> */}
               {article.contents.map(sentence => {
                 if (sentence.content.length) {
                   let text = sentence.content;
@@ -89,16 +93,22 @@ export default class News extends Component {
           <div className="recommend-words-container">
             <h1 className="recommend-words-title">words</h1>
             <div className="recommend-word-list">
-              {selectedWordList.map(selectedWord => {
-                return (
-                  <RecommendWord
-                    highlightSentence={this.highlightSentence.bind(this)}
-                    key={selectedWord.article_word_id}
-                    articleId={article.id}
-                    selectedWord={selectedWord}
-                  />
-                );
-              })}
+              {selectedWordList.length ? (
+                selectedWordList.map(selectedWord => {
+                  return (
+                    <RecommendWord
+                      highlightSentence={this.highlightSentence.bind(this)}
+                      key={selectedWord.article_word_id}
+                      articleId={article.id}
+                      selectedWord={selectedWord}
+                    />
+                  );
+                })
+              ) : (
+                <h1 style={{ color: "var(--light-font-color)" }}>
+                  추천 단어가 없습니다
+                </h1>
+              )}
             </div>
           </div>
         </div>

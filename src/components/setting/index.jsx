@@ -40,7 +40,7 @@ export default class Setting extends Component {
       });
     }
     const categoryId = Cookies.get("categoryId");
-    if (categoryId) {
+    if (categoryId !== undefined) {
       this.setState({
         selectedCategory: parseInt(categoryId)
       });
@@ -53,10 +53,10 @@ export default class Setting extends Component {
     //   selectedCategory: index
     // });
   };
-  selectedLevel = index => {
-    Cookies.set("level", index);
+  selectedLevel = level => {
+    Cookies.set("level", level);
     this.setState({
-      selectedLevel: index
+      selectedLevel: level
     });
   };
   selectedCategory = index => {
@@ -74,7 +74,7 @@ export default class Setting extends Component {
     return (
       <div className="content">
         <div>
-          <h1>Learning Language</h1>
+          <h1 className="setting-title">Learning Language</h1>
           <div className="lang-select-container">
             {languageList.map((language, index) => {
               return (
@@ -97,20 +97,20 @@ export default class Setting extends Component {
           </div>
         </div>
         <div>
-          <h1>Word Level</h1>
+          <h1 className="setting-title">Word Level</h1>
           <div className="level-select-container">
             {levelList.map((level, index) => {
               return (
                 <div
                   style={{
                     backgroundColor:
-                      selectedLevel === index
+                      selectedLevel - 1 === index
                         ? "var(--third-color)"
                         : "transparent"
                   }}
                   className="level-select-button button"
                   onClick={() => {
-                    this.selectedLevel(index);
+                    this.selectedLevel(index + 1);
                   }}
                 >
                   {level}
@@ -120,7 +120,7 @@ export default class Setting extends Component {
           </div>
         </div>
         <div>
-          <h1>Category</h1>
+          <h1 className="setting-title">Category</h1>
           <div className="category-select-container">
             {categoryList.map((category, index) => {
               let style = {

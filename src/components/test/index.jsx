@@ -59,7 +59,7 @@ class Test extends Component {
     });
   };
   render() {
-    const { response, closeSignInModal } = this.props;
+    const { response, closeSignInModal, isSignIn, setSignIn } = this.props;
     const {
       selectMode,
       testMode,
@@ -69,10 +69,10 @@ class Test extends Component {
       wrongAnswer
     } = this.state;
     // if (!response) {
-    //   return <RequireSignIn closeSignInModal={closeSignInModal} />;
+    //   return ;
     //   // this.props.showSignInModal();
     // } else {
-    return (
+    return isSignIn ? (
       <div className="content">
         <SelectMode display={selectMode} showTestMode={this.showTestMode} />
         <TestMode
@@ -87,6 +87,11 @@ class Test extends Component {
           showSelectMode={this.showSelectMode}
         />
       </div>
+    ) : (
+      <RequireSignIn
+        closeSignInModal={closeSignInModal}
+        setSignIn={setSignIn}
+      />
     );
   }
   // }

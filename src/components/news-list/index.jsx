@@ -58,7 +58,7 @@ class Newses extends Component {
 
                     <div className="news-item-title">{article.title}</div>
 
-                    {/* <div className="news-item-date">{article.date}</div> */}
+                    <div className="news-item-date">{article.date}</div>
                     {/* <div className="ngram-bar">
                       {article.ngram.map((ngram, i) => {
                         let percent = Math.round((ngram / totalWord) * 100);
@@ -81,4 +81,4 @@ class Newses extends Component {
     );
   }
 }
-export default withRequest(`${baseUrl}/api/news`)(Newses);
+export default withRequest(`${baseUrl}`)(Newses);

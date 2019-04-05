@@ -73,7 +73,7 @@ export default {
   words: [
     {
       article_word_id: 1,
-      word: "contain",
+      word: "포함",
       translation:
         "[명사] 어떤 사물이나 현상 가운데 함께 들어 있거나 함께 넣음.",
       grade: 3,
@@ -81,21 +81,21 @@ export default {
     },
     {
       article_word_id: 1,
-      word: "commitee",
+      word: "위원회",
       translation: "[명사] 위원 가운데 우두머리.",
       grade: 1,
       sentence_id: 4
     },
     {
       article_word_id: 1,
-      word: "hold",
+      word: "개최",
       translation: "[명사] 모임이나 회의 따위를 주최하여 엶.",
       grade: 4,
       sentence_id: 9
     },
     {
       article_word_id: 1,
-      word: "government",
+      word: "정부",
       translation: `1. 명사 법률 입법, 사법, 행정의 삼권을 포함하는 통치 기구를 통틀어 이르는 말.
       2. 명사 법률 [같은 말] 행정부(삼권 분립에 의하여, 행정을 맡아보는 국가 기관).`,
       grade: 2,
@@ -103,7 +103,7 @@ export default {
     },
     {
       article_word_id: 1,
-      word: "disabled",
+      word: "장애인",
       translation:
         "[명사] 상태신체의 일부에 장애가 있거나 정신 능력이 원활하지 못해 일상생활이나 사회생활에서 어려움이 있는 사람.",
       grade: 3,

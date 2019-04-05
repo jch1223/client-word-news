@@ -77,12 +77,26 @@
   font-weight: bold;
   color: var(--light-font-color);
   font-size: 15pt;
+  line-height: 25pt;
 }
 .news-item-date {
   float: right;
   color: var(--light-font-color);
 }
-
+@media screen and (max-width: 800px) {
+  .news-item-title {
+    font-weight: bold;
+    color: var(--light-font-color);
+    font-size: 15pt;
+    line-height: 25pt;
+    padding: 10px 10px;
+  }
+  .news-item-date {
+    float: right;
+    color: var(--light-font-color);
+    padding: 0 10px;
+  }
+}
 .ngram-bar {
   display: flex;
   height: 5px;

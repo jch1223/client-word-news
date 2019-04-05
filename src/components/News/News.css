@@ -26,11 +26,12 @@ html {
   margin-top: 30px;
 }
 .sentence {
-  line-height: 25px;
+  line-height: 35px;
   background-color: transparent;
   transition: background-color;
   transition-duration: 1s;
 
+  font-size: 14pt;
   cursor: pointer;
 }
 .sentence-highlight {

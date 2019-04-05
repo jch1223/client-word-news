@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Setting.css";
-import { categoryList } from "../../data";
+import { categoryList, baseUrl } from "../../data";
 import Cookies from "js-cookie";
 
 import category0 from "../../img/category0.jpg";
@@ -63,6 +63,16 @@ export default class Setting extends Component {
     Cookies.set("categoryId", index);
     this.setState({
       selectedCategory: index
+    });
+    fetch(`${baseUrl}/api/category`, {
+      method: "POST",
+      categoryId: index
+    }).then(res => {
+      if (res.ok) {
+        console.log(res);
+      } else {
+        console.log(res);
+      }
     });
   };
 

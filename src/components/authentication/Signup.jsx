@@ -28,6 +28,8 @@ export default class Signin extends Component {
       if (res.ok) {
         alert("회원가입 완료");
         this.props.closeSignUpModal();
+      } else {
+        alert(res.statusText);
       }
     });
   };

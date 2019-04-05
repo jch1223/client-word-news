@@ -85,7 +85,7 @@ class App extends Component {
                 <NavLink exact to={"/"}>
                   <img alt="logo" src={logo} className="nav-logo" />
                 </NavLink>
-                <span class="navicon" onClick={this.showNavMenu}>
+                <span className="navicon" onClick={this.showNavMenu}>
                   <div />
                   <div />
                   <div />

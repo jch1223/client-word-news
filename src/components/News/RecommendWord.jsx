@@ -1,30 +1,6 @@
 import React, { Component } from "react";
 import { baseUrl } from "../../data";
-import JSDOM from "jsdom";
-import https from "https";
 import LoadingIcon from "./LoadingIcon";
-
-async function retrieveS(url) {
-  return new Promise((resolve, reject) => {
-    https
-      .get(url, res => {
-        let data = "";
-        res
-          .on("error", e => {
-            reject(e);
-          })
-          .on("data", chunk => {
-            data += chunk;
-          })
-          .on("end", () => {
-            resolve(data);
-          });
-      })
-      .on("error", e => {
-        reject(e);
-      });
-  });
-}
 
 export default class RecommendWord extends Component {
   constructor(props) {

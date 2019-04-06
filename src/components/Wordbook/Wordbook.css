@@ -1,19 +1,23 @@
-/* Wordbook */
-:root {
-  --main-color: rgb(77, 95, 200);
-  --dark-main-color: rgb(30, 39, 92);
-  --second-color: rgb(252, 205, 34);
-  --third-color: rgb(170, 170, 170);
-  --main-bg-color: rgb(255, 255, 255);
-  --light-font-color: rgb(255, 255, 255);
-  --dark-font-color: rgb(0, 0, 0);
-}
-
 input[type="date"] {
   background: transparent;
   border: transparent 0px;
+  text-align: center;
+}
+.datepicker {
+  font-size: 20pt;
+  color: var(--light-font-color);
+}
+.select-option {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
+.wordbook-button {
+  margin: 20px 10px;
+  padding: 10px;
+  border: transparent;
+}
 .word-item {
   display: flex;
   justify-content: space-between;
@@ -21,10 +25,10 @@ input[type="date"] {
 
   width: 100%;
   height: 80px;
-  border-top: 5px var(--dark-main-color) solid;
-  border-bottom: 5px var(--dark-main-color) solid;
   border-radius: 5px;
   margin: 3px 0;
+
+  color: var(--light-font-color);
 }
 
 .word-item > div {
@@ -36,7 +40,7 @@ input[type="date"] {
   padding-left: 10px;
 }
 .word {
-  font-weight: bold;
+  font-size: 20pt;
 }
 .retry-button {
   padding-right: 10px;
@@ -55,7 +59,7 @@ input[type="date"] {
   padding: 20px;
 
   border-radius: 10px;
-  background-color: var(--main-bg-color);
+  background-color: var(--light-font-color);
 }
 
 .word-translation-close {
